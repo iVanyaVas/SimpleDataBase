@@ -1,5 +1,7 @@
 using Console.Printer.Interfaces;
-
+using Console.Repositories.Interfaces;
+using Console.Builders;
+using Factory = Console.Repositories.Factory;
 class MainMenuPrinter : IPrinter
 {
     public IPrinter Action()
@@ -9,9 +11,9 @@ class MainMenuPrinter : IPrinter
         switch (key.Key)
         {
             case ConsoleKey.D1:
-                return this;
+                return new ShowAllPrinter(Factory.UserRepository);
             case ConsoleKey.D2:
-                return this;
+                return new CreateUserFirstNamePrinter(new UserBuilder());
             case ConsoleKey.D0:
                 return null;
             default:
@@ -21,12 +23,12 @@ class MainMenuPrinter : IPrinter
 
     public void Show()
     {
-        Clear();
+        System.Console.Clear();
         
         WriteLine("My Simple Data Base");
         WriteLine();
-        WriteLine("1 - Show Data Base {Not Implemented}");
-        WriteLine("2 - Add record to Data Base {Not Implemented}");
+        WriteLine("1 - Show Data Base");
+        WriteLine("2 - Add record to Data Base");
         WriteLine("0 - Exit");
 
     }

@@ -2,6 +2,6 @@ namespace Console.Printer.Interfaces;
 
 interface IPrinter
 {
-    public void Show();
-    public IPrinter Action();
+     void Show();
+     IPrinter Action();
 }
